@@ -11,6 +11,8 @@
     "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
+    "@atlaskit/css-reset": "^2.0.3",
+    "@atlaskit/reduced-ui-pack": "^8.10.1",
     "atlassian-jwt": "^0.1.5",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",

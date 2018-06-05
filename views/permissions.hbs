@@ -1,0 +1,19 @@
+<header>
+  <h1>GitHub Permissions</h1>
+</header>
+
+<section>
+  <form action="/pages/permissions" method="POST">
+    <div class="ak-field-group">
+      <label for="name">Organizations</label>
+      <input id="organizations" class="ak-field-text" type="text" name="organizations" value="{{organizationNames}}">
+      <div class="description">Name of the GitHub organizations authorized to add developer information separated by commas, e.g. <code><a href="https://github.com/integrations">integrations</a></code></div>
+    </div>
+    <div class="ak-field-group">
+      <label for="organisation">Repositories</label>
+      <input id="repositories" class="ak-field-text" type="text" name="repositories" value="{{repositoryNames}}">
+      <div class="description">Name of the GitHub repositories authorized to add developer information separated by commas, e.g. <code><a href="https://github.com/integrations/jira">integrations/jira</a></code></div>
+    </div>
+    <button type="submit" class="ak-button ak-button__appearance-primary">Update permissions</button>
+  </form>
+</section>
