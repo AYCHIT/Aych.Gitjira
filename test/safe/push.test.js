@@ -51,16 +51,16 @@ describe('GitHub Actions', () => {
             id: 'test-repo-id',
             commits: [
               {
-                hash: "test-commit-id",
-                message: "[TEST-123] Test commit.",
+                hash: 'test-commit-id',
+                message: '[TEST-123] Test commit.',
                 author: {
-                  name: "test-commit-author-name",
-                  email: "test-commit-author-email"
+                  name: 'test-commit-author-name',
+                  email: 'test-commit-author-email'
                 },
-                displayId: "test-c",
+                displayId: 'test-c',
                 fileCount: 3,
-                id: "test-commit-id",
-                issueKeys: ["TEST-123"]
+                id: 'test-commit-id',
+                issueKeys: ['TEST-123']
               }
             ]
           }
