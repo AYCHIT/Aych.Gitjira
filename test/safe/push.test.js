@@ -7,8 +7,7 @@ const payload = {
         id: 'test-commit-id',
         hash: 'test-commit-hash',
         author: {
-          name: 'test-commit-author-name',
-          email: 'test-commit-author-email'
+          username: 'test-commit-author-username'
         },
         message: '[TEST-123] Test commit.',
         added: ['test-added'],
@@ -39,6 +38,13 @@ describe('GitHub Actions', () => {
   describe('push', () => {
     it('should update the Jira issue with the linked GitHub commit', async () => {
       const jiraApi = td.api('https://test-atlassian-instance.net')
+      const githubApi = td.api('https://api.github.com')
+
+      td.when(githubApi.get('/users/test-commit-author-username')).thenReturn({
+        login: 'test-commit-author-username',
+        name: 'test-commit-author-name',
+        email: 'test-commit-author-email'
+      })
 
       await app.receive(payload)
 

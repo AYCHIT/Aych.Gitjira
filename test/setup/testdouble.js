@@ -2,7 +2,6 @@ const { createRobot } = require('probot')
 const { findPrivateKey } = require('probot/lib/private-key')
 const cacheManager = require('cache-manager')
 const createGitHubApp = require('probot/lib/github-app')
-const configureRobot = require('../../lib/configure-robot')
 
 global.nock = require('nock')
 global.td = require('testdouble')
@@ -10,6 +9,21 @@ global.td = require('testdouble')
 beforeAll(() => {
   require('testdouble-jest')(td, jest)
   require('testdouble-nock')(td, nock)
+})
+
+beforeEach(() => {
+  const installation = td.replace('../../lib/models', {
+    Installation: {
+      getForHost: async () => {
+        return {
+          sharedSecret: 'test',
+          jiraHost: 'https://test-atlassian-instance.net'
+        }
+      }
+    }
+  })
+
+  const configureRobot = require('../../lib/configure-robot')
 
   nock('https://api.github.com')
     .post(/\/installations\/[\d\w-]+\/access_tokens/)
