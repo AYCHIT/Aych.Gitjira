@@ -12,16 +12,17 @@ beforeAll(() => {
 })
 
 beforeEach(() => {
-  const installation = td.replace('../../lib/models', {
+  const models = td.replace('../../lib/models', {
     Installation: {
-      getForHost: async () => {
-        return {
-          sharedSecret: 'test',
-          jiraHost: 'https://test-atlassian-instance.net'
-        }
-      }
+      getForHost: td.function()
     }
   })
+
+  td.when(models.Installation.getForHost('https://test-atlassian-instance.net'))
+    .thenReturn({
+      sharedSecret: 'test',
+      jiraHost: 'https://test-atlassian-instance.net'
+    })
 
   const configureRobot = require('../../lib/configure-robot')
 

@@ -42,8 +42,8 @@ describe('GitHub Actions', () => {
 
       td.when(githubApi.get('/users/test-commit-author-username')).thenReturn({
         login: 'test-commit-author-username',
-        name: 'test-commit-author-name',
-        email: 'test-commit-author-email'
+        avatar_url: 'test-commit-author-avatar',
+        html_url: 'test-commit-author-url'
       })
 
       await app.receive(payload)
@@ -60,8 +60,9 @@ describe('GitHub Actions', () => {
                 hash: 'test-commit-id',
                 message: '[TEST-123] Test commit.',
                 author: {
-                  name: 'test-commit-author-name',
-                  email: 'test-commit-author-email'
+                  name: 'test-commit-author-username',
+                  avatar: 'test-commit-author-avatar',
+                  url: 'test-commit-author-url'
                 },
                 displayId: 'test-c',
                 fileCount: 3,
