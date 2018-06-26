@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.addColumn('Installations', 'clientKey', {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false
     })
   },
